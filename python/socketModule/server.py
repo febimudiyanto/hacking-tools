@@ -15,8 +15,13 @@ print("\nServer started...\n")
 conn,addr = sock.accept()
 
 print("Connection established with:",str(addr))
-
 #send message
-message = "\nHello thanks for connecting "+str(addr)
+message = "Hello thanks for connecting "+str(addr)+"\n"
 conn.send(message.encode("ascii"))
+while 1:
+  data = input("server >>")
+  if len(data)==0:break
+  message = data.encode("ascii")
+  conn.send(message)
+
 conn.close()
